@@ -1,4 +1,4 @@
-8
+
 import socket
 import os
 
@@ -20,6 +20,7 @@ while True:
         if len(cmd_res) == 0:
             cmd_res = "cmd has no output..."
         conn.send(str(len(cmd_res.encode())).encode("utf-8"))
+        client_res = conn.recv(1024)
         conn.send(cmd_res.encode("utf-8"))
         print("send done")
 server.close()
