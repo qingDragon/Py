@@ -1,10 +1,5 @@
 
-
-
 import socket
-
-
-
 
 client = socket.socket()
 client.connect(("localhost",8888))
