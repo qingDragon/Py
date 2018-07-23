@@ -13,3 +13,8 @@ class MyTCPHandle(socketserver.BaseRequestHandler):
                 print("err",e)
                 break
 if __name__ == "__main__":
+    HOST,POST = "localhost",9999
+    server = socketserver.TCPServer((HOST,POST),MyTCPHandle)
+    server.serve_forever()
+
+

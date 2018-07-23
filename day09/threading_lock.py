@@ -1,19 +1,16 @@
+# !/usr/bin/env python
+# _*_ coding:utf-8 _*_
 import threading
 import time
 
 def run(n):
-    print("task",n)
-    time.sleep(2)
-    print("task down", n)
+    lock.acquire()
+    global num
+    num += 1
+    lock.release()
 
-#
-# t1 = threading.Thread(target=run,args=("t1",))
-# t2 = threading.Thread(target=run,args=("t2",))
-# t1.start()
-# t2.start()
-#
-
-start_time = time.time()
+lock = threading.Lock()
+num = 0
 t_objs = [] #存线程实例
 for i in range(50):
     t = threading.Thread(target=run,args=("t-%s" %i,))
@@ -23,6 +20,6 @@ for i in range(50):
 
 # for t in t_objs: #循环线程实例列表，等待所有线程执行完毕
 #     t.join()
-time.sleep(3)
+
 print("-----all threads has finished...")
-print("cost:",time.time() - start_time)
+print("num:",num)
