@@ -1,0 +1,41 @@
+线程 ：操作系统最小的调度单位
+      1、内存共享
+      2、线程同时修改同一份数据时必须加锁，mutex互斥锁
+      3、递归锁 （锁中有锁）
+
+      4、join（）
+
+      def run(n):
+      print("run thread...")
+
+      t_res = []
+
+      for i in range(10):
+        t = threading.Thread(target = run,args = (n,))
+        t.start()
+        t_res.append(t)
+      for r in t_res:
+        r.join()
+
+      5、守护线程（slave）服务于非守护线程（master)
+
+      t.setDaemon(True)
+      实际用例，写多线程的时候主线程done，这些线程也要跟着done
+
+队列queue：
+    解耦，使程序直接实现松耦合，
+    提高处理效率
+
+    消费者生产者模型
+
+    FIFO first in first out
+    LIFO last in first out
+
+事件Event
+    红绿灯
+
+
+进程 ：资源的集合
+      至少包含一个线程
+
+
